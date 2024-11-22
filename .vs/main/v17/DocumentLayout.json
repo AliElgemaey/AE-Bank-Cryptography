@@ -1,0 +1,163 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0216B46B-4C86-45A8-9D15-C3620CDC8D03}|main\\main.pyproj|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0216B46B-4C86-45A8-9D15-C3620CDC8D03}|main\\main.pyproj|solutionrelative:main\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\upload_success.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\templates\\upload_success.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\dashboard.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\templates\\dashboard.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\templates\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\share_file.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\templates\\share_file.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\shared_with_me.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\templates\\shared_with_me.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\signup.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\templates\\signup.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|main||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\Static\\AE bank.JPG||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main\\Static\\AE bank.JPG||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "main",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\main.pyproj",
+              "RelativeDocumentMoniker": "main\\main.pyproj",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\main.pyproj",
+              "RelativeToolTip": "main\\main.pyproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-16T17:55:41.359Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AE bank.JPG",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\Static\\AE bank.JPG",
+              "RelativeDocumentMoniker": "main\\Static\\AE bank.JPG",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\Static\\AE bank.JPG",
+              "RelativeToolTip": "main\\Static\\AE bank.JPG",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-10-24T21:04:44.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "signup.html",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\signup.html",
+              "RelativeDocumentMoniker": "main\\templates\\signup.html",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\signup.html",
+              "RelativeToolTip": "main\\templates\\signup.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-24T20:44:09.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "shared_with_me.html",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\shared_with_me.html",
+              "RelativeDocumentMoniker": "main\\templates\\shared_with_me.html",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\shared_with_me.html",
+              "RelativeToolTip": "main\\templates\\shared_with_me.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-24T20:44:09.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "share_file.html",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\share_file.html",
+              "RelativeDocumentMoniker": "main\\templates\\share_file.html",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\share_file.html",
+              "RelativeToolTip": "main\\templates\\share_file.html",
+              "ViewState": "AQIAADgAAAAAAAAAAAAAAJUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-24T20:44:09.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "login.html",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\login.html",
+              "RelativeDocumentMoniker": "main\\templates\\login.html",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\login.html",
+              "RelativeToolTip": "main\\templates\\login.html",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAAJkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-24T20:44:08.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dashboard.html",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\dashboard.html",
+              "RelativeDocumentMoniker": "main\\templates\\dashboard.html",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\dashboard.html",
+              "RelativeToolTip": "main\\templates\\dashboard.html",
+              "ViewState": "AQIAANIAAAAAAAAAAAAAAAoAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-23T20:26:36.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.py",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\main.py",
+              "RelativeDocumentMoniker": "main\\main.py",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\main.py",
+              "RelativeToolTip": "main\\main.py",
+              "ViewState": "AQIAAHABAAAAAAAAAAAAAHIBAAApAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMuSURBVDhPrVTPTxNREP627e7SQm0F2mKLUEVICP5IMBqUhB6NJ4/GGGPwoIf\u002BCR7VxBBPhnAxAeVC4kEuJB6Qi0Y8oCGKpoKQUpEWAhX6c7vb3X1Ol5UauzEc/JLJm31v3pdv5u0M/isYY5zpGohEIs8GBgZu8Dxv7tQik8mwbDb7YGpq6lEqlcqa2/twmOs\u002BBgcHEQgEzK9azMzMsHg8fsdut7Pp6enHKysrafPIQA1hBRRkelUQAcLhMEi9jTLxdnZ23pZl2elwOIYWFxe3zTBrwmAwaHpVcFy1OoIg8P39/c1Efo3KJquq\u002BpBEFCpnNiPiL9CFGvtd14rSyclJDA8P22dnZ1tcLlevKIp\u002B45BgqXBpacn0qqDUQGniXN9F9J6/AIeNg1TIyaOjo9/NEAOWhN3d3aZXRV5W8Sq2jY2sBElSwFNuR9x2x5HWtkabrZrogRXKDUEsb\u002BSxmSlg7tsG1LICX4PAX\u002Blpbff7/Q1mmHUNK6/5t2WKKt4uphBbS0NXy2QasvkiV1RtTrfb7TKvWhNWoGkaNHD4ulXGxNwmPibSOH3Ui95wI5rqeahESq8Ln7dwavLpjXe69HlB1/U2y5RXV1eNdb3E48VCDuvpHF1WoJWJhEyjdHWNVNKvJHBbgDQPlOZ74Ls7ZKmwq6vLsCKrw\u002BZu3lCjl1UquA6P0wGPi4eX7EzYhdNB6j5NoiL/AJS1S5YKY7GYsa6tS5BlUkOptTU6EI1IcNp3aQboNAh0eIUdhJybgFrcI9V2Pf9U2B4KQKCIisLbEQFnWz6gx7eMk/4VnGyOobU\u002BDk79SQF5IqNG4YM7loSKohjWfljE8WYn3KIdvkM6OKYBukIEMq2kkj7BiIJRF9Wd0iCEnlimnEwmjVUkuxU5jgzdD3jooUpEppWosT1kTlJE/S127UA89gV1J76Nj48PWRJ2dHSY3h4qg0HUkwz5AmcQajRc6vtIGRHam9aev1y/9/r1xNuRkZFiDeHY2Nj\u002BIPgTN69fThwVQ2Eon4iQHiD3HqzhPNOcvek3b\u002B7HK2Rm6MFAY\u002BoQ08uPWCmRYvl5ncnJBO29JLsajUbDe1HAL6CnYE1YMsFsAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-10-16T17:41:20.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "upload_success.html",
+              "DocumentMoniker": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\upload_success.html",
+              "RelativeDocumentMoniker": "main\\templates\\upload_success.html",
+              "ToolTip": "C:\\Users\\Ali\\OneDrive\\Desktop\\Cryptography1\\main\\main\\templates\\upload_success.html",
+              "RelativeToolTip": "main\\templates\\upload_success.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-10-24T20:44:10.129Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

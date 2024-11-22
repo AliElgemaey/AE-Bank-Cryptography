@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AE Bank | Share a File</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .share-file-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+            button:hover {
+                background-color: #003d80;
+            }
+
+        .message-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+            .message-list li {
+                background-color: #d1ecf1;
+                color: #0c5460;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            .back-link:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="share-file-container">
+        
+        <img src="{{ url_for('static', filename='AE bank.JPG') }}" alt="AE Bank" class="logo">
+
+        <h1>Share a File</h1>
+        <p>Share '{{ filename }}' with another user:</p>
+
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="shared_with_username">Enter Username:</label>
+                <input type="text" id="shared_with_username" name="shared_with_username" required>
+            </div>
+            <button type="submit">Share</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'share' %}
+        <div class="alert-message">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <style>
+            .alert-message {
+                background-color: #d4edda; 
+                color: #155724; 
+                border: 1px solid #c3e6cb; 
+                padding: 10px;
+                margin: 15px 0;
+                border-radius: 5px;
+                font-size: 14px;
+                text-align: center;
+            }
+        </style>
+
+
+        <!-- Link back to dashboard -->
+        <a href="{{ url_for('dashboard') }}" class="back-link">Back to Dashboard</a>
+    </div>
+</body>
+</html>

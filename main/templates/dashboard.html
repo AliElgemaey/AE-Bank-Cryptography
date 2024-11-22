@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AE Bank | Dashboard</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .dashboard-container {
+            width: 800px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .welcome-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .account-summary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+            .account-summary h3 {
+                color: #2c3e50;
+                margin-bottom: 10px;
+                font-size: 20px;
+            }
+
+            .account-summary p {
+                font-size: 16px;
+                color: #555;
+                margin: 0;
+            }
+
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+            .file-list li {
+                display: flex;
+                justify-content: space-between;
+                background-color: #f4f4f4;
+                margin-bottom: 10px;
+                padding: 15px;
+                border-radius: 6px;
+                align-items: center;
+            }
+
+        .file-options a,
+        .file-options button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-view {
+            background-color: #007bff;
+        }
+
+        .btn-share {
+            background-color: #28a745;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        .file-upload {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+            .file-upload input[type="file"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .file-upload button {
+                background-color: #0056b3;
+                color: #fff;
+                border: none;
+                padding: 12px;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+                font-size: 16px;
+            }
+
+                .file-upload button:hover {
+                    background-color: #003d80;
+                }
+
+        .shared-files-link {
+            margin-top: 30px;
+        }
+
+            .shared-files-link a {
+                display: block;
+                background-color: #28a745;
+                padding: 12px;
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+                .shared-files-link a:hover {
+                    background-color: #218838;
+                }
+
+        .logout-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 12px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+            .logout-link:hover {
+                background-color: #5a6268;
+            }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #95a5a6;
+            text-align: center;
+        }
+
+            .footer a {
+                color: #0056b3;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <img src="{{ url_for('static', filename='AE bank.JPG') }}" alt="AE Bank" class="logo">
+
+        <h1>Welcome to Your AE Bank Dashboard</h1>
+        <p>Welcome, {{ username }}!</p>
+
+        
+        <div class="account-summary">
+            <h3>Account Summary</h3>
+            <p><strong>Account Balance:</strong> $150,0000</p>
+            <p><strong>Last Transaction:</strong> $10,000 deposited on October 21, 2024</p>
+        </div>
+
+        <!-- Uploaded Files Section -->
+        <h2>Your Uploaded Files</h2>
+        {% if files %}
+        <ul class="file-list">
+            {% for file in files %}
+            <li>
+                <span>{{ file.file_name }}</span>
+                <div class="file-options">
+                    <a href="{{ url_for('download_file', filename=file.file_name) }}" class="btn-view">Open</a>
+                    <a href="{{ url_for('share_file', filename=file.file_name) }}" class="btn-share">Share</a>
+                    <form method="POST" action="{{ url_for('delete_file', filename=file.file_name) }}" style="display:inline;">
+                        <button type="submit" class="btn-delete">Remove</button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No files found. Upload your important documents to get started!</p>
+        {% endif %}
+
+        <!-- File Upload Section -->
+        <div class="file-upload">
+            <h3>Upload a New Document</h3>
+            <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Upload Document</button>
+            </form>
+        </div>
+
+        <!-- Shared with Me Section -->
+        <div class="shared-files-link">
+            <a href="{{ url_for('shared_with_me') }}" class="btn-share">Files Shared with Me</a>
+        </div>
+
+        <!-- Sign Out -->
+        <a href="{{ url_for('logout') }}" class="logout-link">Sign Out</a>
+
+       
+        <div class="footer">
+            <p>Need help? Visit our <a href="#">Help Center</a> or <a href="#">Contact Us</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

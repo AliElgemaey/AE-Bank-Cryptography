@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AE Bank | Create Account</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+            .form-field label {
+                display: block;
+                margin-bottom: 5px;
+                color: #555;
+                font-size: 14px;
+            }
+
+            .form-field input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+        .alert {
+            background-color: #ffcccc;
+            color: #b30000;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .btn-register {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-register:hover {
+                background-color: #003d80;
+            }
+
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .login-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .login-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .security-info {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+        }
+
+            .security-info i {
+                font-size: 18px;
+                color: #27ae60;
+                margin-right: 5px;
+            }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+            .signup-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .signup-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .password-policy {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        
+        <img src="{{ url_for('static', filename='AE bank.JPG') }}" alt="AE Bank" class="logo">
+
+        <h1>Create Your AE Bank Account</h1>
+
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'signup' %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        
+        <form action="{{ url_for('signup') }}" method="post">
+            <div class="form-field">
+                <label for="username">Enter Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-field">
+                <label for="password">Choose Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="password-policy">
+                <p>Your password must meet the following criteria:</p>
+                <ul>
+                    <li>At least 8 characters long</li>
+                    <li>At least one special character (e.g., !@#$%^&*)</li>
+                    <li>At least one number</li>
+                </ul>
+            </div>
+            <button type="submit" class="btn-register">Register</button>
+        </form>
+
+        <!-- Link to Login -->
+        <div class="signup-link">
+            <p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+        </div>
+
+        
+        <div class="security-info">
+            <p><i class="fa fa-lock"></i> Your data is encrypted and secure.</p>
+        </div>
+    </div>
+</body>
+</html>
