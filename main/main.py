@@ -15,16 +15,19 @@ from flask_migrate import Migrate
 import os
 import re
 
+# Launch the Flask application.
 app = Flask(__name__)
+# Setting up the upload folder, database URI, secret key, and permitted file types
 app.config['SECRET_KEY'] = 'super-secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app_data.db'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-
+# Set up the database and additional extensions.
+# Flask-Migrate handles database migrations, Bootstrap handles front-end styling, and SQLAlchemy handles database administration.
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
-
+# User model for storing user credentials and RSA keys
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -32,14 +35,14 @@ class User(db.Model):
     rsa_public_key = db.Column(db.LargeBinary, nullable=True)
     rsa_private_key = db.Column(db.LargeBinary, nullable=True)
     user_files = db.relationship('File', backref='user', lazy=True)
-
+ # File model for storing information about user-uploaded files
 class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     file_name = db.Column(db.String(100), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     encrypted_aes_key = db.Column(db.LargeBinary, nullable=False)
     initialization_vector = db.Column(db.LargeBinary, nullable=False)
-    
+ # SharedFile model for managing files shared between users 
 class SharedFile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     file_id = db.Column(db.Integer, db.ForeignKey('file.id'), nullable=False)
@@ -48,7 +51,8 @@ class SharedFile(db.Model):
     file = db.relationship('File', backref='shared_with_users')
     shared_with = db.relationship('User', backref='shared_files')
 
-
+# Function to encrypt file content using DES
+# Pads the file content to a suitable size and encrypts using DES in CFB mode
 def encrypt_file_content(file_path, des_key, iv):
     with open(file_path, 'rb') as f:
         content = f.read()
@@ -56,14 +60,16 @@ def encrypt_file_content(file_path, des_key, iv):
     # DES uses 64-bit (8 bytes) block size, adjust padding accordingly
     padder = des_padding.PKCS7(algorithms.TripleDES.block_size).padder()
     padded_content = padder.update(content) + padder.finalize()
-
+ # Create cipher and encrypt content
     cipher = Cipher(algorithms.TripleDES(des_key), modes.CFB(iv), backend=default_backend())
     encryptor = cipher.encryptor()
     encrypted_content = encryptor.update(padded_content) + encryptor.finalize()
-
+# Save encrypted content to a new file with '.enc' extension
     with open(file_path + '.enc', 'wb') as enc_file:
         enc_file.write(encrypted_content)
-
+        
+# Function to decrypt file content encrypted with DES
+# Uses DES key and initialization vector to decrypt
 def decrypt_file_content(enc_file_content, des_key, iv):
     cipher = Cipher(algorithms.TripleDES(des_key), modes.CFB(iv), backend=default_backend())
     decryptor = cipher.decryptor()
@@ -74,6 +80,7 @@ def decrypt_file_content(enc_file_content, des_key, iv):
     unpadded_content = unpadder.update(decrypted_padded_content) + unpadder.finalize()
     return unpadded_content
 
+# Function to encrypt the DES key using RSA public key
 def rsa_encrypt_des_key(des_key, public_key):
     try:
         rsa_pub_key = serialization.load_pem_public_key(public_key, backend=default_backend())
@@ -92,7 +99,8 @@ def rsa_encrypt_des_key(des_key, public_key):
     except Exception as e:
         print(f"Error during encryption: {e}")
         raise
-
+    
+# Function to decrypt the DES key using RSA private key
 def rsa_decrypt_des_key(encrypted_key, private_key):
     try:
         rsa_priv_key = serialization.load_pem_private_key(private_key, password=None, backend=default_backend())
@@ -111,11 +119,12 @@ def rsa_decrypt_des_key(encrypted_key, private_key):
     except ValueError as e:
         print(f"Decryption failed: {e}")
         raise ValueError("Decryption failed. Check your keys or padding.")
-
+    
+# The signup page is redirected by the home route.
 @app.route('/')
 def home():
     return redirect(url_for('signup'))
-
+# Function to validate the password according to policy (minimum length, special character, and number required)
 def validate_password(password):
     if (len(password) >= 8 and
         re.search(r'[_!@#$%^&*(),.?":{}|<>]', password) and
@@ -123,7 +132,7 @@ def validate_password(password):
         return True
     else:
         return False
-
+# Signup route to create a new user account
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     session['_flashes'] = []  
@@ -141,13 +150,13 @@ def signup():
         if existing_user:
             flash('Username already exists. Please choose a different one.')
             return redirect(url_for('signup'))
-
+        # Hash the password for secure storage
         password_hash = generate_password_hash(password)
-
+        # Create a pair of RSA keys for encryption.
         private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
         public_key = private_key.public_key().public_bytes(encoding=serialization.Encoding.PEM, format=serialization.PublicFormat.SubjectPublicKeyInfo)
         private_key_pem = private_key.private_bytes(encoding=serialization.Encoding.PEM, format=serialization.PrivateFormat.PKCS8, encryption_algorithm=serialization.NoEncryption())
-
+        # Create a new user and add to the database
         new_user = User(username=username, password_hash=password_hash, rsa_public_key=public_key, rsa_private_key=private_key_pem)
         db.session.add(new_user)
         db.session.commit()
@@ -159,21 +168,21 @@ def signup():
 
 
 
-
+# Login route to allow users to access their account
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
-
+        # Verify user credentials
         if user and check_password_hash(user.password_hash, password):
             session['user_id'] = user.id
             return redirect(url_for('dashboard'))
         else:
             flash('Invalid credentials')
     return render_template('login.html')
-
+# Dashboard route for the user, showing their uploaded files
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
@@ -183,13 +192,13 @@ def dashboard():
     user_files = File.query.filter_by(owner_id=user.id).all()
     return render_template('dashboard.html', files=user_files, username=user.username)
 
-
+# Logout route to end the user session
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)  
     flash('You have been logged out.')
     return redirect(url_for('login'))
-
+# Upload file route that encrypts and saves the uploaded file
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'user_id' not in session:
@@ -204,22 +213,22 @@ def upload_file():
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-
+        # Generate DES key and IV for encryption
         des_key = os.urandom(24)  # TripleDES key is 24 bytes
         iv = os.urandom(8)  # DES block size is 8 bytes
         encrypt_file_content(file_path, des_key, iv)
 
         user = User.query.get(session['user_id'])
         encrypted_des_key = rsa_encrypt_des_key(des_key, user.rsa_public_key)
-
+         # Save file metadata, encrypted key, and IV to the database
         new_file = File(file_name=filename + '.enc', owner_id=user.id, encrypted_aes_key=encrypted_des_key, initialization_vector=iv)
         db.session.add(new_file)
         db.session.commit()
-
+        # Remove the original unencrypted file from the server
         os.remove(file_path)
         flash('File uploaded and encrypted successfully!', 'upload')
     return redirect(url_for('dashboard'))
-
+# Route to download an encrypted file after decrypting it
 @app.route('/download/<filename>')
 def download_file(filename):
     if 'user_id' not in session:
@@ -234,7 +243,7 @@ def download_file(filename):
         user = User.query.get(session['user_id'])
         decrypted_des_key = rsa_decrypt_des_key(file_record.encrypted_aes_key, user.rsa_private_key)
         decrypted_content = decrypt_file_content(encrypted_content, decrypted_des_key, file_record.initialization_vector)
-
+        # Send the decrypted file as an attachment
         return send_file(io.BytesIO(decrypted_content), download_name=filename.replace('.enc', ''), as_attachment=True)
 
     flash("You don't have access to this file.")
@@ -370,10 +379,10 @@ def delete_file(filename):
 
     return redirect(url_for('dashboard'))
 
-
+# A feature that determines whether the uploaded file has an authorised extension
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
-
+# Main block to run the app
 if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
